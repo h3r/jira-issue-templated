@@ -11675,11 +11675,8 @@ var renderTableColumn = async (columns, issue, row) => {
               const templateContents = await app.vault.read(app.vault.getAbstractFileByPath(templatePath))
               
               //check if folder exists
-              if(folder && folder.length > 0){
-                const curFolder = app.vault.getAbstractFileByPath(folder)
-                if( !(curFolder && (curFolder instanceof TFolder)) ) {
-                  app.vault.createFolder(folder);
-                } 
+              if(folder && folder.length > 0 && !app.vault.getAbstractFileByPath(folder)){
+                app.vault.createFolder(folder);
               }
 
               //create note
