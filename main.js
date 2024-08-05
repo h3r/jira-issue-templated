@@ -11669,9 +11669,7 @@ var renderTableColumn = async (columns, issue, row) => {
             let el = createEl("a", { text: "\u2795", title: "Create new note", href:"", cls: "internal-link icon-link", parent: noteCell });
 
             el.addEventListener("click", async () => {
-              debugger;
-
-              const folder = SettingsData.noteFolderPath ?? "";
+              const folder = SettingsData.noteFolder ?? "";
               const fullPath = `${folder}/${issue.key}.md`;
               const templatePath = SettingsData.noteTemplate;
               const templateContents = await app.vault.read(app.vault.getAbstractFileByPath(templatePath))
